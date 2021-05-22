@@ -26,3 +26,58 @@ var questions = [
   },
 ];
 console.log(questions);
+
+var i = 0;
+
+var startBtn = document.getElementById("startQuiz");
+function output() {
+  var body = document.body;
+  var bodyEl = document.createElement("div");
+  //for (i; i < questions.length; i++)
+  bodyEl.textContent = questions[i].question;
+  body.appendChild(bodyEl);
+  for (var j = 0; j < questions[0].choices.length; j++) {
+    var bodyEl = document.createElement("button");
+    bodyEl.setAttribute("class", j);
+    bodyEl.textContent = questions[i].choices[j] + "\n";
+    body.appendChild(bodyEl);
+  }
+  i++;
+  console.log(
+    questions,
+    questions[2],
+    questions[2].question,
+    questions[2].choices[2]
+  );
+}
+/*function outputA() {
+  var body = document.body;
+
+  for (var j = 0; j < questions[0].choices.length; j++) {
+    var bodyEl = document.createElement("button");
+    bodyEl.setAttribute("class", j);
+    bodyEl.textContent = questions[i].choices[j] + "\n";
+    body.appendChild(bodyEl);
+  }
+  console.log(
+    questions,
+    questions[2],
+    questions[2].question,
+    questions[2].choices[2]
+  );
+  i++;
+}*/
+
+startBtn.onclick = output;
+//startBtn.onclick = outputA;
+
+for (var k = 0; k < questions.length; k++) output();
+//outputA();
+//output();
+//outputA();
+//output();
+//outputA();
+//output();
+//outputA();
+//o//utput();
+//outputA();
