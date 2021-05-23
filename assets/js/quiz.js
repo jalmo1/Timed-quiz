@@ -1,4 +1,9 @@
-var questions = [
+var startBtn = document.getElementById("startQuiz");
+var score = [];
+var timeEl = document.getElementById("countdown");
+var timeLeft = 100;
+var i = 0;
+var quizQuestions = [
   {
     question: "1. What engine has the most cylinders?",
     choices: ["V8", "I4", "I6", "V4"],
@@ -25,59 +30,60 @@ var questions = [
     correctAnswer: 0,
   },
 ];
-console.log(questions);
+console.log(quizQuestions);
 
-var i = 0;
+startBtn.addEventListener("click", startQuiz);
 
-var startBtn = document.getElementById("startQuiz");
-function output() {
+function startQuiz() {
+  if ((startBtn = "click")) {
+    console.log("start button clicked");
+  }
+  quizTime();
+}
+
+/*function displayQuestions() {
   var body = document.body;
   var bodyEl = document.createElement("div");
-  //for (i; i < questions.length; i++)
-  bodyEl.textContent = questions[i].question;
+  bodyEl.textContent = quizQuestions[i].question;
   body.appendChild(bodyEl);
-  for (var j = 0; j < questions[0].choices.length; j++) {
+  for (var j = 0; j < quizQuestions[0].choices.length; j++) {
     var bodyEl = document.createElement("button");
     bodyEl.setAttribute("class", j);
-    bodyEl.textContent = questions[i].choices[j] + "\n";
+    bodyEl.textContent = quizQuestions[i].choices[j] + "\n";
     body.appendChild(bodyEl);
   }
   i++;
   console.log(
-    questions,
-    questions[2],
-    questions[2].question,
-    questions[2].choices[2]
+    quizQuestions,
+    quizQuestions[2],
+    quizQuestions[2].question,
+    quizQuestions[2].choices[2]
   );
-}
-/*function outputA() {
-  var body = document.body;
-
-  for (var j = 0; j < questions[0].choices.length; j++) {
-    var bodyEl = document.createElement("button");
-    bodyEl.setAttribute("class", j);
-    bodyEl.textContent = questions[i].choices[j] + "\n";
-    body.appendChild(bodyEl);
-  }
-  console.log(
-    questions,
-    questions[2],
-    questions[2].question,
-    questions[2].choices[2]
-  );
-  i++;
 }*/
 
-startBtn.onclick = output;
-//startBtn.onclick = outputA;
+startBtn.onclick = displayQuestions;
 
-for (var k = 0; k < questions.length; k++) output();
-//outputA();
-//output();
-//outputA();
-//output();
-//outputA();
-//output();
-//outputA();
-//o//utput();
-//outputA();
+//create a time to countdown from 100
+function quizTime() {
+  var timeInterval = setInterval(function () {
+    // As long as the `timeLeft` is greater than 1
+    if (timeLeft > 1) {
+      // Set the `textContent` of `timerEl` to show the remaining seconds
+      timeEl.textContent = timeLeft + " seconds remaining";
+      // Decrement `timeLeft` by 1
+      timeLeft--;
+    } else if (timeLeft === 1) {
+      // When `timeLeft` is equal to 1, rename to 'second' instead of 'seconds'
+      timeEl.textContent = timeLeft + " second remaining";
+      timeLeft--;
+    } else {
+      // Once `timeLeft` gets to 0, set `timeEl` to an empty string
+      timeEl.textContent = "";
+      // Use `clearInterval()` to stop the time
+      clearInterval(timeInterval);
+    }
+  }, 1000);
+}
+
+/*function displayQuestions(question) {}
+console.log(displayQuestions);*/

@@ -14,9 +14,25 @@
         <h1>Welcome</h1>
         <h2>Click button to start quiz!</h2>
         <button id="startQuiz">Start Quiz</button>
+        <h4 id="countdown"></h4>
       </div>
-      <div id="questions" class="questions"></div>
-      <ul class="choices"></ul>
+      <div id="questions" class="questions">
+        <ul class="choices"></ul>
+      </div>
+
+      <div class="addscore">
+        <h3><span id="score"></span></h3>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter your name:"
+          id="scoreInput"
+          aria-describedby="addon"
+        />
+        <div>
+          <button id="submitscore">Submit</button>
+        </div>
+      </div>
     </main>
     <script src="./assets/js/quiz.js"></script>
   </body>
