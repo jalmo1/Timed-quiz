@@ -1,6 +1,10 @@
 var startBtn = document.getElementById("startQuiz");
-var score = [];
-var nextQuestion;
+var score = 0;
+var questions = document.getElementById("questions");
+var questionAnswers = document.getElementById("questionanswers");
+//var nextQuestion;
+var nextBtn = document.getElementById("next-question");
+var userInput = document.getElementById("user-answer");
 var questionTitle = document.getElementById("question-title");
 var answerChoices = document.getElementById("choices");
 var timeEl = document.getElementById("countdown");
@@ -8,86 +12,64 @@ var scoreInput = document.getElementById("score-input");
 var submitBtn = document.getElementById("submitscore");
 var openingTitle = document.getElementById("opening-title");
 var timeLeft = 100;
+
 var i = 0;
 var quizQuestions = [
   {
     question: "1. What engine has the most cylinders?",
     choices: ["V8", "I4", "I6", "V4"],
-    correctAnswer: 0,
+    correctAnswer: [0],
   },
   {
     question: "2. What engine is found inside a Toyota Supra?",
     choices: ["LS2", "RB26", "2JZ", "K24"],
-    correctAnswer: 2,
+    correctAnswer: [2],
   },
   {
     question: "3. How many cylinders does a V8 have?",
     choices: ["5", "6", "8", "4"],
-    correctAnswer: 2,
+    correctAnswer: [2],
   },
   {
     question: "4. What type of race goes in a straight line?",
     choices: ["Circuit racing", "Time attack", "Drag racing", "Drifting"],
-    correctAnswer: 2,
+    correctAnswer: [2],
   },
   {
     question: "5. When should you get an oil change?",
     choices: ["5,000 miles", "2,000 miles", "10,000 miles", "100 miles"],
-    correctAnswer: 0,
+    correctAnswer: [0],
   },
 ];
-console.log(quizQuestions);
 
-startBtn.addEventListener("click", startQuiz);
+document.getElementById("score-input").style.display = "none";
+document.getElementById("submitscore").style.display = "none";
+document.getElementById("next-question").style.display = "none";
 
-function startQuiz() {
-  if ((startBtn = "click")) {
-    console.log("start button clicked");
-  }
+startBtn.addEventListener("click", function () {
   document.getElementById("startQuiz").style.display = "none";
   clearEverything();
   //display time left
   quizTime();
-}
+  displayQuestions();
+  document.getElementById("next-question").style.display = "block";
+});
 
-function displayQuestions(quizQuestions) {
-  /*questionTitle.innerHTML = quizQuestions.question;
-  quizQuestions.choices.forEach((element) => {
-    var btn = document.createElement("button");
-    btn.className = "answer-choice";
-    btn.innerHTML = element;
-    answerChoices.appendChild(btn);
-    btn.addEventListener("click", followingQuestion);
-  });*/
-}
-
-function followingQuestion(q) {
-  i++;
-  if (i < quizQuestions.length) {
-    nextQuestion = quizQuestions[i];
-    displayQuestions(followingQuestion);
-  } else {
-    i = 0;
-    displayQuestions(followingQuestion);
-  }
-}
-
-/*var body = document.body;
+function displayQuestions(question) {
+  var body = document.body;
   var bodyEl = document.createElement("div");
   bodyEl.textContent = quizQuestions[i].question;
   body.appendChild(bodyEl);
-  for (var j = 0; j < quizQuestions[0].choices.length; j++) {
+  for (var a = 0; a < quizQuestions[0].choices.length; a++) {
     var bodyEl = document.createElement("button");
-    bodyEl.setAttribute("class", j);
-    bodyEl.textContent = quizQuestions[i].choices[j] + "\n";
+    bodyEl.setAttribute("id", a);
+    bodyEl.innerHTML = quizQuestions[i].choices[a] + "\n";
     body.appendChild(bodyEl);
+    console.log(a);
   }
   i++;
-}*/
+}
 
-startBtn.onclick = displayQuestions;
-
-//create a time to countdown from 100
 function quizTime() {
   var timeInterval = setInterval(function () {
     // As long as the `timeLeft` is greater than 1
@@ -107,6 +89,16 @@ function quizTime() {
       clearInterval(timeInterval);
     }
   }, 1000);
+}
+
+nextBtn.addEventListener("click", function nextBtn() {
+  document.querySelector(".next-question");
+  displayQuestions();
+});
+//create a time to countdown from 100
+
+function correctAnswer() {
+  button.getElementById("0").value;
 }
 
 function clearEverything() {

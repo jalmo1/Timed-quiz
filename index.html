@@ -18,10 +18,16 @@
       <h4 id="countdown"></h4>
       <div id="questions" class="questions">
         <h3 id="question-title"></h3>
-        <ul class="choices"></ul>
-      </div>
+        <div id="user-input">
+          <ul class="choices" id="choices"></ul>
+        </div>
 
-      <div class="addscore">
+      <div>
+        <button class="next-question" id="next-question">Next</button>
+      </div>
+      <div id="questionanswers"></div>
+
+      <div id="addscore">
         <h3><span id="score"></span></h3>
         <input
           type="text"
@@ -30,9 +36,7 @@
           id="score-input"
           aria-describedby="addon"
         />
-        <div>
-          <button id="submitscore">Submit</button>
-        </div>
+        <button id="submitscore">Submit</button>
       </div>
     </main>
     <script src="./assets/js/quiz.js"></script>
