@@ -1,6 +1,12 @@
 var startBtn = document.getElementById("startQuiz");
 var score = [];
+var nextQuestion;
+var questionTitle = document.getElementById("question-title");
+var answerChoices = document.getElementById("choices");
 var timeEl = document.getElementById("countdown");
+var scoreInput = document.getElementById("score-input");
+var submitBtn = document.getElementById("submitscore");
+var openingTitle = document.getElementById("opening-title");
 var timeLeft = 100;
 var i = 0;
 var quizQuestions = [
@@ -38,11 +44,35 @@ function startQuiz() {
   if ((startBtn = "click")) {
     console.log("start button clicked");
   }
+  document.getElementById("startQuiz").style.display = "none";
+  clearEverything();
+  //display time left
   quizTime();
 }
 
-/*function displayQuestions() {
-  var body = document.body;
+function displayQuestions(quizQuestions) {
+  /*questionTitle.innerHTML = quizQuestions.question;
+  quizQuestions.choices.forEach((element) => {
+    var btn = document.createElement("button");
+    btn.className = "answer-choice";
+    btn.innerHTML = element;
+    answerChoices.appendChild(btn);
+    btn.addEventListener("click", followingQuestion);
+  });*/
+}
+
+function followingQuestion(q) {
+  i++;
+  if (i < quizQuestions.length) {
+    nextQuestion = quizQuestions[i];
+    displayQuestions(followingQuestion);
+  } else {
+    i = 0;
+    displayQuestions(followingQuestion);
+  }
+}
+
+/*var body = document.body;
   var bodyEl = document.createElement("div");
   bodyEl.textContent = quizQuestions[i].question;
   body.appendChild(bodyEl);
@@ -53,12 +83,6 @@ function startQuiz() {
     body.appendChild(bodyEl);
   }
   i++;
-  console.log(
-    quizQuestions,
-    quizQuestions[2],
-    quizQuestions[2].question,
-    quizQuestions[2].choices[2]
-  );
 }*/
 
 startBtn.onclick = displayQuestions;
@@ -85,5 +109,8 @@ function quizTime() {
   }, 1000);
 }
 
-/*function displayQuestions(question) {}
-console.log(displayQuestions);*/
+function clearEverything() {
+  document.getElementById("score-input").style.display = "none";
+  document.getElementById("submitscore").style.display = "none";
+  document.getElementById("opening-title").style.display = "none";
+}

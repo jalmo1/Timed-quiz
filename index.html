@@ -10,13 +10,14 @@
   </head>
   <body>
     <main>
-      <div>
+      <div id="opening-title">
         <h1>Welcome</h1>
         <h2>Click button to start quiz!</h2>
         <button id="startQuiz">Start Quiz</button>
-        <h4 id="countdown"></h4>
       </div>
+      <h4 id="countdown"></h4>
       <div id="questions" class="questions">
+        <h3 id="question-title"></h3>
         <ul class="choices"></ul>
       </div>
 
@@ -26,7 +27,7 @@
           type="text"
           class="form-control"
           placeholder="Enter your name:"
-          id="scoreInput"
+          id="score-input"
           aria-describedby="addon"
         />
         <div>
